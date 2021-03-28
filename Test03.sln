@@ -1,20 +1,63 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test03", "Test03\Test03.csproj", "{B7DC21EC-3BDC-4B4E-934F-7B43E9801C06}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B7DC21EC-3BDC-4B4E-934F-7B43E9801C06}.Debug|x86.ActiveCfg = Debug|x86
-		{B7DC21EC-3BDC-4B4E-934F-7B43E9801C06}.Debug|x86.Build.0 = Debug|x86
-		{B7DC21EC-3BDC-4B4E-934F-7B43E9801C06}.Release|x86.ActiveCfg = Release|x86
-		{B7DC21EC-3BDC-4B4E-934F-7B43E9801C06}.Release|x86.Build.0 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Test03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                Console.WriteLine("请输入第一个整数：");
+                string x = Console.ReadLine();
+                Console.WriteLine("请输入第二个整数：");
+                string y = Console.ReadLine();
+                if (x == y)
+                {
+                    Console.WriteLine("您输入的两个数相同");
+                }
+                else
+                {
+                    Console.WriteLine("您输入的两个数不同");
+                }
+                Console.WriteLine("请选择运算符号（+,-,*,/）：");
+                string strOperate = Console.ReadLine();
+                string strResult = "";
+                strResult = Convert.ToString(Calculator.GetResult(Convert.ToDouble(x), Convert.ToDouble(y), strOperate));
+                Console.WriteLine("结果是：" + strResult);
+                Console.ReadLine();
+            }
+            catch
+            {
+                Console.WriteLine("您的输入有误：");
+            }
+        }
+    }
+    public class Calculator 
+    {
+        public static double GetResult(double x,double y,string Operate) 
+        {
+            double result = 0d;
+            switch (Operate)
+            {
+                case "+":
+                    result = x + y;
+                    break;
+                case "-":
+                    result = x - y;
+                    break;
+                case "*":
+                    result = x * y;
+                    break;
+                case "/":
+                    result = x / y;
+                    break;
+            }
+            return result;
+        }
+    }
+}
+
